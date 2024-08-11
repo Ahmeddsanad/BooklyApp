@@ -1,9 +1,11 @@
+import 'package:bookly/Features/home/domain/entites/book_entity.dart';
+
 import 'access_info.dart';
 import 'sale_info.dart';
 import 'search_info.dart';
 import 'volume_info.dart';
 
-class BookMolel {
+class BookModel extends BookEntity {
   String? kind;
   String? id;
   String? etag;
@@ -13,7 +15,7 @@ class BookMolel {
   AccessInfo? accessInfo;
   SearchInfo? searchInfo;
 
-  BookMolel({
+  BookModel({
     this.kind,
     this.id,
     this.etag,
@@ -22,9 +24,16 @@ class BookMolel {
     this.saleInfo,
     this.accessInfo,
     this.searchInfo,
-  });
+  }) : super(
+            bookId: id!,
+            image: volumeInfo?.imageLinks?.thumbnail ??
+                'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg',
+            title: volumeInfo?.title ?? 'Title is not available',
+            authorName: volumeInfo?.authors?.first ?? 'author is not available',
+            price: 0.0,
+            rating: volumeInfo?.averageRating ?? 0.0);
 
-  factory BookMolel.fromJson(Map<String, dynamic> json) => BookMolel(
+  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
         kind: json['kind'] as String?,
         id: json['id'] as String?,
         etag: json['etag'] as String?,
