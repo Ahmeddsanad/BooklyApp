@@ -29,6 +29,8 @@ class HomeRepoImpl extends HomeRepo {
     } on Exception catch (e) {
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
       }
     }
   }
@@ -43,7 +45,11 @@ class HomeRepoImpl extends HomeRepo {
       var books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
     } on Exception catch (e) {
-      return left(ServerFailure(e.toString()));
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
     }
   }
 }

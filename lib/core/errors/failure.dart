@@ -21,13 +21,28 @@ class ServerFailure extends Failure {
       case DioExceptionType.badCertificate:
         return ServerFailure('Bad Certificate with API Server');
       case DioExceptionType.badResponse:
-      //handling this case
+        return ServerFailure.fromResponse(
+            e.response?.statusCode ?? 0, e.response!.data);
       case DioExceptionType.cancel:
         return ServerFailure('Request with API Server');
       case DioExceptionType.connectionError:
         return ServerFailure('No Internet Connection');
       case DioExceptionType.unknown:
         return ServerFailure('Oops! There was an Error, Please try again');
+    }
+  }
+
+  factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+    if (statusCode == 404) {
+      return ServerFailure(
+          'Your Request was not found, please try again later');
+    } else if (statusCode == 500) {
+      return ServerFailure(
+          'There is a problem with server, please try again later');
+    } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
+      return ServerFailure(response['error']['message']);
+    } else {
+      return ServerFailure('There was an error, please try again later');
     }
   }
 }
