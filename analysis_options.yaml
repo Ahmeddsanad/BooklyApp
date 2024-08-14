@@ -11,6 +11,7 @@ analyzer:
   errors:
     unused_field: ignore
     unnecessary_import: ignore
+    avoid_renaming_method_parameters: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
