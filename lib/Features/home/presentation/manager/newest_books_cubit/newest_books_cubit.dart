@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:bookly/Features/home/domain/entites/book_entity.dart';
 import 'package:bookly/Features/home/domain/use%20cases/fetch_newest_books_use_case.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'newest_books_state.dart';
