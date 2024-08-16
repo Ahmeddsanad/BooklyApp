@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-SnackBar BuildErrorWidget(BuildContext context) {
+SnackBar buildErrorWidget(BuildContext context) {
   return SnackBar(
     content: const Text(
       'An error occurred. Please try again.',

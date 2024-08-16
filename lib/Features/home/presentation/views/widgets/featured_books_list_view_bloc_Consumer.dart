@@ -27,7 +27,7 @@ class _FeaturedBooksListViewBlocConsumerState
         }
         if (state is FeaturedBooksPaginationFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            BuildErrorWidget(context),
+            buildErrorWidget(context),
           );
         }
       },
