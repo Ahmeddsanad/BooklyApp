@@ -25,7 +25,9 @@ class HomeRepoImpl extends HomeRepo {
       if (cachedbooks.isNotEmpty) {
         return right(cachedbooks);
       }
-      var books = await homeRemoteDataSource.fetchFeaturedBooks();
+      var books = await homeRemoteDataSource.fetchFeaturedBooks(
+        pageNumber: pageNumber,
+      );
       return right(books);
     } on Exception catch (e) {
       if (e is DioError) {
