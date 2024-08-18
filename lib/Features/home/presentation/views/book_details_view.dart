@@ -10,14 +10,14 @@ class BookDetailsView extends StatelessWidget {
     required this.books,
   });
 
-  final List<BookEntity> books;
+  final BookEntity books;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: BookDetailsViewBody(
-          books: books,
+          bookData: books,
         ),
       ),
     );

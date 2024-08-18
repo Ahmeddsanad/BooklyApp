@@ -9,10 +9,10 @@ import 'custom_book_details_app_bar.dart';
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({
     super.key,
-    required this.books,
+    required this.bookData,
   });
 
-  final List<BookEntity> books;
+  final BookEntity bookData;
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +23,18 @@ class BookDetailsViewBody extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
-              children: const [
-                CustomBookDetailsAppBar(),
-                BookDetailsSection(),
-                Expanded(
+              children: [
+                const CustomBookDetailsAppBar(),
+                BookDetailsSection(
+                  bookData: bookData,
+                ),
+                const Expanded(
                   child: SizedBox(
                     height: 50,
                   ),
                 ),
-                SimilarBooksSection(),
-                SizedBox(
+                const SimilarBooksSection(),
+                const SizedBox(
                   height: 40,
                 ),
               ],
